@@ -1,10 +1,8 @@
 const fs = require('fs');
 
-const crearArchivo = async (base = 5) => {
+const crearArchivo = async (base = 5, listar = false) => {
   try {
-    console.log('   =================');
-    console.log('Tabla del: ', base);
-    console.log('=================');
+
 
     let salida = "";
 
@@ -13,8 +11,16 @@ const crearArchivo = async (base = 5) => {
       /* console.log(`${base} X ${i} = ${r}`); */
       salida += `${base} X ${i} = ${r}\n`;
     }
+    
+    if( listar ){
+      console.log('   =================');
+      console.log('Tabla del: ', base);
+      console.log('=================');  
+      
+      console.log(salida);
+     }
+    
 
-    console.log(salida);
     fs.writeFileSync(`tabla-${base}.txt`, salida);
 
     return `tabla-${base}.txt`;
